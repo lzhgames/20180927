@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # __author__ = 'Lu'
-from PyQt5.QtWidgets import QWidget,QApplication,QMainWindow
+from PyQt5.QtWidgets import QApplication,QMainWindow
 from my import Ui_MainWindow
 import sys
 class mywindow(Ui_MainWindow,QMainWindow):
