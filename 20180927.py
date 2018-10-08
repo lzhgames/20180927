@@ -1,16 +1,28 @@
-# -*- coding: utf-8 -*-
-# __author__ = 'Lu'
-from PyQt5.QtWidgets import QApplication,QMainWindow
-from my import Ui_MainWindow
+# coding:utf-8
+
 import sys
-class mywindow(Ui_MainWindow,QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QWidget, QLCDNumber, QSlider, QVBoxLayout, QApplication)
 
-if __name__=="__main__":
-    app = QApplication(sys.argv)
-    myshow=mywindow()
-    myshow.show()
-    sys.exit(app.exec_())
 
+class SigSlot(QWidget):
+    def __init__(self, parent=None):
+        QWidget.__init__(self)
+        self.setWindowTitle('XXOO')
+        lcd = QLCDNumber(self)
+        slider = QSlider(Qt.Horizontal, self)
+
+        vbox = QVBoxLayout()
+        vbox.addWidget(lcd)
+        vbox.addWidget(slider)
+
+        self.setLayout(vbox)
+
+        slider.valueChanged.connect(lcd.display)
+        self.resize(350, 250)
+
+
+app = QApplication(sys.argv)
+qb = SigSlot()
+qb.show()
+sys.exit(app.exec_())
